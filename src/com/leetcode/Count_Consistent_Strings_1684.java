@@ -13,7 +13,7 @@ public class Count_Consistent_Strings_1684 {
     }
     public static int countConsistentStrings(String allowed, String[] words) {
         int res = words.length;
-        int k[] = new int[123];
+        int k [] = new int[123];
         for(int i =0;i<allowed.length();i++)
             k[(int)allowed.charAt(i)]=1;
         for (String s : words) {
