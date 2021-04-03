@@ -1,23 +1,22 @@
 package com.leetcode;
-
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Maximum_69_Number_1323 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println(maximum69Number(9669));
+        System.out.println(maximum69Number(99669));
     }
     public static int maximum69Number (int num) {
-        StringBuilder ans = new StringBuilder(); boolean done = false;
-        char[] arr = ("" + num).toCharArray();
-        for (int i = 0; i < arr.length; i++) {
-            if(arr[i] == '6' && !done) {
-                ans.append('9');
-                done = true;
-            }else
-            ans.append(arr[i]);
+        List<Integer> al = new ArrayList<>();
+        StringBuilder as = new StringBuilder();
+        while (num != 0){
+            int digit = num % 10;
+            num /= 10;
+            al.add(digit);
         }
-        return Integer.parseInt(ans.toString());
+        Collections.reverse(al);
+        al.set(al.indexOf(6), 9);
+        for(Integer a:al)
+            as.append(a);
+        return Integer.parseInt(as.toString());
     }
 }
