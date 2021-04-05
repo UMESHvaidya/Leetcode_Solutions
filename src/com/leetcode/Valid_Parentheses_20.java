@@ -1,8 +1,4 @@
 package com.leetcode;
-
-import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Valid_Parentheses_20 {
@@ -12,22 +8,38 @@ public class Valid_Parentheses_20 {
         System.out.println(isValid(command));
     }
     public static boolean isValid(String expression){
-        ArrayDeque <Character> stack = new ArrayDeque<>();
-        Map<Character, Character> parenthesis = new HashMap<>();
-        parenthesis.put('(',')');
-        parenthesis.put('{','}');
-        parenthesis.put('[',']');
-        for(char c:expression.toCharArray()) {
-            if ("({[".contains((c + ""))) {
-                stack.push(c);
-            } else {
-                if (stack.isEmpty())
+        char[] arr = new char[expression.length()];
+        int indx = 0;
+        for(char c:expression.toCharArray()){
+            if (c =='('|| c =='[' || c =='{')
+                arr[indx++] = c;
+            else{
+                if (indx == 0)
                     return false;
-                else if (parenthesis.get(stack.peek()) != c)
-                    return false;
-                else stack.pop();
+                if (c ==')') {
+                    if (arr[indx - 1] != '(') return false;
+                    else {
+                        arr[indx - 1] = 0;
+                        indx--;
+                    }
+                }
+                if (c ==']') {
+                    if (arr[indx - 1] != '[') return false;
+                    else {
+                        arr[indx - 1] = 0;
+                        indx--;
+                    }
+                }
+                if (c =='}') {
+                    if (arr[indx - 1] != '{') return false;
+                    else{
+                        arr[indx-1] = 0;
+                        indx--;
+                    }
+                }
             }
+
         }
-        return stack.isEmpty();
+        return indx ==0;
     }
 }
