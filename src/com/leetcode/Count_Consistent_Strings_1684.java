@@ -3,8 +3,6 @@ package com.leetcode;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-//import static java.lang.System.*;
-
 public class Count_Consistent_Strings_1684 {
     public static void main(String[] args) {
         String allowed = "abc";
